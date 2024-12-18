@@ -1,86 +1,63 @@
 # Configuración Personal de Neovim
 
-Este repositorio contiene mi configuración personal de Neovim, diseñada para ser modular, eficiente y agradable a la vista. Utilizo Lua para la configuración, Lazy para la gestión de plugins y el tema de color Catppuccin con el flavor `mocha`. Además, implemento Telescope para una búsqueda rápida y eficiente.
+Este repositorio contiene mi configuración personalizada de Neovim. Aunque inicialmente fue creada copiando y pegando código, la estoy usando como base para aprender y mejorar mis habilidades con Neovim y Lua.
 
-![Captura desde 2024-12-16 12-41-58](https://github.com/user-attachments/assets/b8162e6a-55af-4180-a9c4-9404621d1852)
+![image](https://github.com/user-attachments/assets/4d4deaf4-242c-4fc1-9d17-a37a7eb2abaf)
 
+---
 
 ## Requisitos Previos
 
-*   Neovim 0.8 o superior
-*   Git
+Asegúrate de tener instalados los siguientes programas antes de usar esta configuración:
+
+- [Neovim](https://neovim.io/) (versión 0.10.1 o superior)
+- [Git](https://git-scm.com/)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (para búsqueda rápida)
+- [fd](https://github.com/sharkdp/fd) (para encontrar archivos)
+
+---
 
 ## Instalación
 
-1.  Clona este repositorio en tu directorio de configuración de Neovim:
-    ```bash
-    git clone https://github.com/Marcos8i22o/nvim-configuration.git ~/.config/nvim
-    ```
-2.  Abre Neovim:
+1. Clona este repositorio en tu máquina:
+   ```bash
+   git clone <URL-del-repo> ~/.config/nvim
+2. Instala el gestor de plugins Lazy.nvim siguiendo las instrucciones en su página.
+3. Abre Neovim y espera a que se instalen los plugins automáticamente:
     ```bash
     nvim
-    ```
-3.  Si es necesario, instala los plugins que faltan utilizando Lazy:
-    *   `:Lazy`
-    *   `i`
 
-## Estructura del Repositorio
+## Estructura del proyecto
 
-Esta configuración está organizada en módulos para facilitar su mantenimiento y personalización:
-
-![image](https://github.com/user-attachments/assets/0a4e40c3-1a7c-4479-a18d-a57e834b8dcf)
+![image](https://github.com/user-attachments/assets/28871a8b-a858-4747-a0b0-1125e6ab4cf1)
 
 
-## Plugins Utilizados
+# Plugins Principales
 
-*   [`lazy.nvim`](https://github.com/folke/lazy.nvim): Gestor de plugins para Neovim.
-*   [`folke/tokyonight.nvim`](https://github.com/folke/tokyonight.nvim): Tema de color Tokyo Night (utilizado como base).
-*   [`catppuccin/nvim`](https://github.com/catppuccin/nvim): Tema de color Catppuccin, con el sabor `mocha`.
-*   [`nvim-telescope/telescope.nvim`](https://github.com/nvim-telescope/telescope.nvim): Buscador de archivos, texto, buffers, ayuda y más.
-*   [`nvim-lua/plenary.nvim`](https://github.com/nvim-lua/plenary.nvim): Librería de apoyo para Telescope.
-*   [`nvim-telescope/telescope-media-files.nvim`](https://github.com/nvim-telescope/telescope-media-files.nvim): Plugin para la vista previa de archivos multimedia con Telescope.
+### Gestor de Plugins
+- [lazy.nvim](https://github.com/folke/lazy.nvim): Para gestionar los plugins de forma eficiente.
+  
+### Productividad
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim): Búsquedas rápidas de archivos, contenido y más.
+    nvim-tree: Explorador de archivos.
 
-## Atajos de Teclado Claves
+### Interfaz
+- [catppuccin](https://github.com/catppuccin/nvim): Tema visual para Neovim.
 
-Estos son algunos de los atajos de teclado más importantes definidos en `lua/config/keymaps.lua` (usando `<leader>` como espacio):
+### Atajos de Teclado
 
-*   `<leader>w`: Guardar el archivo (`:w`).
-*   `<leader>q`: Cerrar el buffer actual (`:bd`).
-*   `y` en modo visual: Copiar al portapapeles (`"*y`).
-*   `p` en modo normal y visual: Pegar desde el portapapeles (`"*p`).
-*  `<leader>pv`: Abrir el archivo `init.lua`.
-*   `<leader>ff`: Buscar archivos con Telescope (`:Telescope find_files`).
-*   `<leader>fg`: Buscar texto con Telescope (`:Telescope live_grep`).
-*   `<leader>fb`: Buscar buffers con Telescope (`:Telescope buffers`).
-*  `<leader>fh`: Buscar en la documentación de ayuda con Telescope (`:Telescope help_tags`).
+Algunos de los atajos que he configurado:
 
-## Opciones de Configuración Personalizadas
+* **Telescope**:
 
-*   **Opciones de Neovim:** Configuradas en `lua/config/options.lua`. Incluye opciones básicas como:
-    *   Números de línea.
-    *   Resaltado de la línea del cursor.
-    *   Indentación con espacios.
-    *   Búsqueda incremental.
-*    **Autocomandos:** Definidos en `lua/config/autocommands.lua`, incluye:
-    *  Resaltado al copiar y pegar.
-    *  Creación de carpetas si no existen al momento de guardar.
-*   **Tema de color:** El tema de color principal es Catppuccin con el sabor `mocha`.
-*    **Integraciones de tema:** Catppuccin se integra con plugins como `cmp`, `gitsigns`, `nvimtree`, `treesitter`, `notify`, `mini`, `telescope`, `which_key`, `indent_blankline`, y `native_lsp`.
+- `<leader>ff`: Buscar archivos.
+- `<leader>fg`: Buscar texto dentro de archivos.
+- `<leader>fb`: Abrir lista de buffers.
+- `<leader>fh`: Buscar ayuda de Neovim.
 
-## Flujo de Trabajo
+* **Nvim-Tree**:
 
-*   **Telescope:** Utilizo Telescope para búsquedas rápidas de archivos, texto, buffers y documentación, lo que me permite navegar y encontrar información de manera eficiente.
-*   **Copiar y Pegar:** Utilizo los accesos directos `y` y `p` con el buffer de sistema para copiar y pegar texto entre aplicaciones.
-*   **Organización:** Mantengo mi configuración modularizada para que sea fácil de mantener y extender.
-
-## Personalización
-
-Puedes personalizar esta configuración de las siguientes maneras:
-
-*   **Opciones de Neovim:** Modifica el archivo `lua/config/options.lua` para personalizar las opciones básicas de Neovim.
-*   **Atajos de Teclado:** Edita el archivo `lua/config/keymaps.lua` para cambiar los atajos de teclado.
-*   **Plugins:** Añade, elimina o configura plugins en el archivo `lua/plugins/lazy.lua`.
-*   **Tema Catppuccin:** Modifica la configuración de Catppuccin en `lua/plugins/catppuccin.lua` para cambiar el sabor, las integraciones, estilos, etc.
-*  **Configuracion de Telescope:** Modifica la configuración de telescope en `lua/plugins/telescope.lua` para modificar los keymaps y las opciones.
+- `<leader>e`: Abrir o cerrar el explorador de archivos.
+(El resto de los atajos están en el archivo keymaps.lua).
 
 
